@@ -28,7 +28,7 @@ export function sortPlacesByDistance(
   places: Place[],
   lat: number,
   lon: number
-) {
+): Place[] {
   const sortedPlaces = [...places];
   sortedPlaces.sort((a, b) => {
     const distanceA = calculateDistance(lat, lon, a.lat, a.lon);
