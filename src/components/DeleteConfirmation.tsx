@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import ProgressBar from "./ProgressBar.tsx";
 import type { DeleteConfirmationProps } from "../utils/type-utils.ts";
+
+const TIMER: number = 3000;
 
 const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
   onConfirm,
   onCancel,
 }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onConfirm();
+    }, TIMER);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [onConfirm]);
+
   return (
     <div id="delete-confirmation">
       <h2>Are you sure?</h2>
@@ -17,6 +30,7 @@ const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({
           Yes
         </button>
       </div>
+      <ProgressBar timer={TIMER} />
     </div>
   );
 };

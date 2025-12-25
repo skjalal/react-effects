@@ -1,5 +1,3 @@
-import type { Ref } from "react";
-
 type Place = {
   id: string;
   title: string;
@@ -24,17 +22,18 @@ type DeleteConfirmationProps = {
 };
 
 type ModalProps = {
-  ref: Ref<ModelRef>;
+  open: boolean;
+  onClose: () => void;
 };
 
-type ModelRef = {
-  open: () => void;
-  close: () => void;
+type ProgressBarProps = {
+  timer: number;
 };
+
 export {
   type Place,
   type PlacesProps,
   type DeleteConfirmationProps,
   type ModalProps,
-  type ModelRef,
+  type ProgressBarProps,
 };
